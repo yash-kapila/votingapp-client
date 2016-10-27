@@ -47,6 +47,6 @@ function build() {
 	}
 }
 
-gulp.task('build',  build());
+gulp.task('build', ['clean'],  build());
 
 gulp.task('default', ['build']);
