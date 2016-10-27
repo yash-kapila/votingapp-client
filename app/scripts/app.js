@@ -1,4 +1,4 @@
-angular.module('voting_app', ['ui.router', 'ngCookies']);
+angular.module('voting_app', ['ui.router', 'ngCookies', 'ui.bootstrap']);
 
 angular.module('voting_app').config(StateConfig);
 
