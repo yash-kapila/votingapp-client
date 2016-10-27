@@ -1,5 +1,5 @@
 {
-	"vendor": ["jquery", "angular", "angular-ui-router", "bootstrap"],
+	"vendor": ["jquery", "angular", "angular-ui-router", "bootstrap", "angular-cookies"],
 	"entry": ["./app/index.js"],
 	"index": "./app/index.html"
 }

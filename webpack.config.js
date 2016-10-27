@@ -3,7 +3,6 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var mod = require("./config/config.json");
 
 module.exports = function(){
-
 	var config = {
 		entry: {
 			vendor: mod.vendor,
@@ -46,15 +45,8 @@ module.exports = function(){
 	config.debug = true;
 	config.devtool = 'eval';
 
-	for(var key in config.entry) {			
-		config.entry[key].unshift(
-			'webpack-dev-server/client?http://localhost:8080/',
-			'webpack/hot/dev-server'
-		);
-	}
-
 	config.plugins = config.plugins.concat(
-		new webpack.HotModuleReplacementPlugin()
+		new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.[chunkhash].js")
 	);
 
 	return config;

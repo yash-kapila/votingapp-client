@@ -6,11 +6,10 @@ var webpackConfig = require('./webpack.config.js');
 var del = require('del');
 var mod = require("./config/config.json");
 
-var outputPath = __dirname+'/build/app';
-
 // build index.html
 function buildIndexHtml() {
 	var indexHtmlPath = mod.index;
+	var outputPath = __dirname+'/_build/app';
 	
 	var injectPaths = gulp.src([
 		outputPath+'/vendor*.js',
@@ -20,19 +19,21 @@ function buildIndexHtml() {
 		read: false,
 		cwd: outputPath
 	});
-
+	
 	return gulp.src(indexHtmlPath)
 		.pipe(inject(injectPaths, {addRootSlash: false}))
 		.pipe(gulp.dest(outputPath));
 }
 
+// clean _build dir
+gulp.task('clean', function() {
+	del.sync(['./_build/**']);
+});
+
 // build dev/uat/prod
 function build() {
 	return function(done) {
 		var config = webpackConfig();
-
-		// clean existing folder
-		del.sync(['./'+outputPath+'/**/*']);
 
 		// run Webpack bundler
 		webpack(config, function(err, stats) {
