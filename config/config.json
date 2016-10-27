@@ -1,0 +1,5 @@
+{
+	"vendor": ["jquery", "angular", "angular-ui-router", "bootstrap"],
+	"entry": ["./app/index.js"],
+	"index": "./app/index.html"
+}
