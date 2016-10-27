@@ -2,12 +2,12 @@
 	'use strict';
     angular.module('voting_app').controller('loginController', LoginCtrl);
 
-    LoginCtrl.$inject = ['$scope', '$cookies'];
+    LoginCtrl.$inject = ['$scope'];
 
     /**
      *
      */
-    function LoginCtrl($scope, $cookies) {
+    function LoginCtrl($scope) {
         
     }
 })();

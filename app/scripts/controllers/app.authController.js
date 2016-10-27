@@ -12,6 +12,6 @@
     	if(authStatus)
         	$state.go('profile');
         else
-        	$state.go('login');
+        	$state.go('home');
     }
 })();

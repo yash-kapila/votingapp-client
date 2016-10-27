@@ -1,4 +1,4 @@
-angular.module('voting_app', ['ui.router']);
+angular.module('voting_app', ['ui.router', 'ngCookies']);
 
 angular.module('voting_app').config(StateConfig);
 
@@ -18,6 +18,12 @@ function StateConfig($stateProvider, $urlRouterProvider) {
             controller: 'authController',
             controllerAs: 'authCtrl'
         })
+        .state('home', {
+            url: '/home',          
+            templateUrl: require('../views/app.homePage.html'),
+            controller: 'homeController',
+            controllerAs: 'homeCtrl'
+        })        
         .state('profile', {
             url: '/profile',          
             templateUrl: require('../views/app.profilePage.html'),
