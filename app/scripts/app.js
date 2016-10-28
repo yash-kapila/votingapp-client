@@ -29,11 +29,5 @@ function StateConfig($stateProvider, $urlRouterProvider) {
             templateUrl: require('../views/app.profilePage.html'),
             controller: 'profileController',
             controllerAs: 'profileCtrl'
-        })
-        .state('login', {
-            url: '/login',         
-            templateUrl: require('../views/app.loginPage.html'),
-            controller: 'loginController',
-            controllerAs: 'loginCtrl'
         });              
 }

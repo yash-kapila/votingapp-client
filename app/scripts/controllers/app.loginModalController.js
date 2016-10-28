@@ -1,23 +1,22 @@
 (function () {
 	'use strict';
-    angular.module('voting_app').controller('signUpModalController', SignUpModalCtrl);
+    angular.module('voting_app').controller('loginModalController', LoginModalCtrl);
 
-    SignUpModalCtrl.$inject = ['$scope', '$uibModalInstance', 'preLogin'];
+    LoginModalCtrl.$inject = ['$scope', '$uibModalInstance', 'preLogin'];
 
     /**
      *
      */
-    function SignUpModalCtrl($scope, $uibModalInstance, preLogin) {
+    function LoginModalCtrl($scope, $uibModalInstance, preLogin) {
         var vm = this;
 
-        vm.signUp = function(){
+        vm.login = function(){
             var record = {
-                email: vm.email,
                 username: vm.username,
                 password: vm.password
             };
 
-            preLogin.signUpUser(record).then(function(response){
+            preLogin.loginUser(record).then(function(response){
                 console.log("SUCCESS: " + response);
                 $uibModalInstance.close();
             }, function(response){
