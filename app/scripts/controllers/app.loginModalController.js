@@ -18,10 +18,20 @@
 
             preLogin.loginUser(record).then(function(response){
                 console.log("SUCCESS: " + response);
-                $uibModalInstance.close();
+                vm.loginFailure = false;
+                $uibModalInstance.close(response);
             }, function(response){
                 console.log("FAILURE: " + response);
+                vm.loginFailure = true;
+                vm.loginFailureMsg = response.data;
             });
         };
+
+        var initialize = function(){
+            vm.loginFailure = false;
+            vm.loginFailureMsg = '';
+        };
+
+        initialize();
     }
 })();

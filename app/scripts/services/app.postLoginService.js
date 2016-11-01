@@ -12,6 +12,30 @@
 
         var obj = {};
 
+        obj.submitPoll = function(pollInfo){
+            return $http.post('/api/v1/savepoll', 
+                {
+                    params : pollInfo,
+                    headers : {
+                        'Accept' : 'application/json',
+                        'Content-Type' : 'application/x-www-form-urlencoded'
+                    }
+                }
+            );
+        };
+        
+        obj.getMyPolls = function(user){
+            return $http.get('/api/v1/mypolls', 
+                {
+                    params : user,
+                    headers : {
+                        'Accept' : 'application/json',
+                        'Content-Type' : 'application/x-www-form-urlencoded'
+                    }
+                }
+            );
+        };        
+
         obj.signOut = function(record){
             return $http.post('/api/v1/logout', 
                 {

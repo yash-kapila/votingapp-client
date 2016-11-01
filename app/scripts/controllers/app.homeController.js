@@ -19,8 +19,8 @@
                 keyboard: false
             });
             
-            modalInstance.result.then(function () {
-                $state.go('profile');
+            modalInstance.result.then(function (response) {
+                $state.go('profile', {username: response.data.username, userid: response.data.id});
             }, function () {
                 // No change to modal is dismissed
             });            
@@ -35,8 +35,8 @@
                 keyboard: false
             });
             
-            modalInstance.result.then(function () {
-                $state.go('profile');
+            modalInstance.result.then(function (response) {
+                $state.go('profile', {username: response.data.username, userid: response.data.id});
             }, function () {
                 // No change to modal is dismissed
             });                 

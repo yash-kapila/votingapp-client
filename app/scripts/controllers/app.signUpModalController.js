@@ -19,10 +19,21 @@
 
             preLogin.signUpUser(record).then(function(response){
                 console.log("SUCCESS: " + response);
-                $uibModalInstance.close();
+                vm.signupFailure = false;
+                $uibModalInstance.close(response);
             }, function(response){
-                console.log("FAILURE: " + response);
+                console.log("FAILURE: " + JSON.stringify(response));
+                vm.signupFailure = true;
+                vm.signupFailureMsg = response.data;
             });
         };
+        
+        
+        var initialize = function(){
+            vm.signupFailure = false;
+            vm.signupFailureMsg = '';
+        };
+        
+        initialize();
     }
 })();

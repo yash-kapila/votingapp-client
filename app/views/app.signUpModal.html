@@ -12,6 +12,9 @@
             <label>Password</label>
             <input type="password" class="form-control" placeholder="Password" ng-model="signUpModalCtrl.password">
         </div>
+        <div class="form-group signup-failure-error" ng-show="signUpModalCtrl.signupFailure">
+            <span> {{signUpModalCtrl.signupFailureMsg}} </span>
+        </div>
         <button type="submit" class="btn btn-primary" ng-click="signUpModalCtrl.signUp()"> Sign Up </button>
     </form>
 </div>

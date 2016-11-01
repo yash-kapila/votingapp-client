@@ -18,8 +18,57 @@
 			<h4> What would you like to do today? </h4>
 		</div>
 		<div class="vote-body-button">
-			<button class="btn btn-success form-inline" ng-click="profileCtrl.signUp()"> New Poll </button>
-			<button class="btn btn-info form-inline" ng-click="profileCtrl.signUp()"> My Polls </button>
+			<button class="btn btn-success form-inline" ng-click="profileCtrl.newPollFunction();"> 
+				New Poll 
+			</button>
+			<button class="btn btn-info form-inline" ng-click="profileCtrl.myPollsFunction()"> 
+				My Polls 
+			</button>
 		</div>
 	</div>
+	
+	<div ng-show="profileCtrl.newPoll">
+		<div class="col-xs-4 col-sm-4 col-md-4"></div>
+		<div class="col-xs-4 col-sm-4 col-md-4 text-center">
+			<div>
+				<h1> New Poll </h1>
+			</div>
+	        <div class="form-group">
+	            <label> Name your poll. </label>
+	            <input type="text" class="form-control" ng-model="profileCtrl.pollName">
+	        </div>
+	        <div class="form-group">
+	            <label> Options </label>
+	            <div ng-repeat="option in profileCtrl.pollOptions" class="poll-options">
+	            	<input type="text" class="form-control" ng-model="option.value">
+	            </div>
+	        </div>
+	        <div>
+	        	<button class="btn btn-default" ng-click="profileCtrl.addOptions()"> More Options </button>
+	        	<br><br>
+	        	<button class="btn btn-success" ng-click="profileCtrl.submitPoll()"> Submit Poll </button>
+	        </div>
+		</div>
+	</div>
+
+	<div ng-show="profileCtrl.myPolls" class="text-center">
+		<div>
+			<h1> My Polls </h1>
+		</div>
+	</div>
+	
+	<div ng-show="profileCtrl.pollCreated" class="text-center">
+		<div>
+			<h1> Congratulations! </h1>
+			<h5> Your poll has been posted to </h5>
+			<h4 class="pollURL"> {{profileCtrl.pollURL}} </h4>
+		</div>
+	</div>
+
+	<div ng-show="profileCtrl.pollNotCreated" class="text-center">
+		<div>
+			<h5> Unfortunately we weren't able to create your poll this time. </h5>
+			<h5> Please try again. </h5>
+		</div>
+	</div>	
 </div>
