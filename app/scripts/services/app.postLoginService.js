@@ -46,6 +46,18 @@
                 }
             );
         };
+        
+        obj.deletePoll = function(id){
+            return $http.delete('/api/v1/removepoll', 
+                {
+                    params : id,
+                    headers : {
+                        'Accept' : 'application/json',
+                        'Content-Type' : 'application/x-www-form-urlencoded'
+                    }
+                }
+            );
+        };
 
         return obj;
     }

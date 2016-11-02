@@ -1,0 +1,48 @@
+<header>
+	<div class="row vote-header">
+		<div class="col-xs-9 col-sm-9 col-md-9 vote-header-title">
+			<span> VotePlex </span>
+		</div>
+	</div>
+</header>
+
+<div class="body">
+	<div class="vote-body">
+		<div class="vote-body-h1">
+			<h1> VotePlex </h1>
+		</div>
+		<div class="vote-body-h4">
+			<h4> Create custom polls with live results </h4>
+		</div>
+		<br>
+	</div>
+	<div class="vote-body-footer row" ng-show="pollDetailsCtrl.showPoll">
+		<div class="col-xs-6 col-sm-6 col-md-6 text-center">
+			<div class="heading">
+				<h1>
+					{{pollDetailsCtrl.pollQuestion}}
+				</h1>
+				<h4> by </h4>
+				<h3>
+				    {{pollDetailsCtrl.username}}
+				</h3>
+			</div>
+		</div>
+		<div class="col-xs-6 col-sm-6 col-md-6 text-center">
+			<table class="table poll-details-table">
+				<tr ng-repeat="option in pollDetailsCtrl.pollOptions">
+					<td> 
+					    <input type="radio" class="poll-value-radio" name="pollOptions" 
+					    	ng-value="option._id" ng-model="pollDetailsCtrl.selectedOption">
+					</td>
+					<td> 
+						<span class="poll-value-label"> {{option.value}} </span>
+					</td>
+				</tr>
+			</table>            
+            <div>
+                <button class="btn btn-success" ng-click="pollDetailsCtrl.pollVote()"> Vote </button>
+            </div>
+		</div>
+	</div>	
+</div>

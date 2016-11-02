@@ -35,6 +35,30 @@
                 }
             );
         };
+        
+        obj.getPollDetails = function(url){
+            return $http.get('/api/getpolldetails', 
+                {
+                    params: url,                    
+                    headers : {
+                        'Accept' : 'application/json',
+                        'Content-Type' : 'application/x-www-form-urlencoded'
+                    }
+                }
+            );
+        };
+
+        obj.submitVote = function(id){
+            return $http.put('/api/submitvote', 
+                {
+                    params: id,                    
+                    headers : {
+                        'Accept' : 'application/json',
+                        'Content-Type' : 'application/x-www-form-urlencoded'
+                    }
+                }
+            );
+        };
 
         return obj;
     }

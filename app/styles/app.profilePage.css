@@ -5,3 +5,19 @@
 .pollURL{
     color: #0074c4;
 }
+
+.retrieved-polls-list{
+    margin-top: 10px;
+}
+
+.cursor{
+    cursor: pointer;
+}
+
+.poll-pie-chart{
+    width: 100%;
+}
+
+.no-votes-cast{
+    margin-top: 30px;
+}

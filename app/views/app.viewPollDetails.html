@@ -1,0 +1,18 @@
+<div class="modal-body">
+    <div class="text-center">
+        <h1> {{viewPollDetailsModalCtrl.pollQuestion}} </h1>
+    </div>
+    
+    <div class="poll-chart">
+        <div ng-hide="viewPollDetailsModalCtrl.noVotesCast">
+            <canvas id="pie" class="chart chart-pie" class="poll-pie-chart"
+                chart-data="viewPollDetailsModalCtrl.pollVotes" chart-labels="viewPollDetailsModalCtrl.pollValues">
+            </canvas>
+        </div>
+        <div ng-show="viewPollDetailsModalCtrl.noVotesCast" class="no-votes-cast text-center">
+            <h5>
+                No votes have been cast yet for this poll.
+            </h5>
+        </div>
+    </div>
+</div>

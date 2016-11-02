@@ -18,10 +18,10 @@
 			<h4> What would you like to do today? </h4>
 		</div>
 		<div class="vote-body-button">
-			<button class="btn btn-success form-inline" ng-click="profileCtrl.newPollFunction();"> 
+			<button class="btn btn-success form-inline" ng-click="profileCtrl.newPollTab();"> 
 				New Poll 
 			</button>
-			<button class="btn btn-info form-inline" ng-click="profileCtrl.myPollsFunction()"> 
+			<button class="btn btn-info form-inline" ng-click="profileCtrl.myPollsTab()"> 
 				My Polls 
 			</button>
 		</div>
@@ -52,8 +52,19 @@
 	</div>
 
 	<div ng-show="profileCtrl.myPolls" class="text-center">
-		<div>
-			<h1> My Polls </h1>
+		<div class="retrieved-polls-list">
+			<table class="table">
+				<tr>
+					<th class="text-center"> Poll </th>
+					<th class="text-center"> Action </th>
+				</tr>
+				<tr ng-repeat="options in profileCtrl.retrievedPolls">
+					<td class="cursor" ng-click="profileCtrl.viewPollDetails(options);"> {{options.question}} </td>
+					<td> 
+						<button class="btn btn-default" ng-click="profileCtrl.deletePoll(options);"> Delete </button>
+					</td>
+				</tr>
+			</table>
 		</div>
 	</div>
 	
@@ -61,7 +72,7 @@
 		<div>
 			<h1> Congratulations! </h1>
 			<h5> Your poll has been posted to </h5>
-			<h4 class="pollURL"> {{profileCtrl.pollURL}} </h4>
+			<h4 class="pollURL cursor" ng-click="profileCtrl.openPoll();"> {{profileCtrl.pollURL}} </h4>
 		</div>
 	</div>
 
