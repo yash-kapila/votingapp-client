@@ -13,6 +13,9 @@
         var initialize = function(){
             vm.pollQuestion = pollOptions.question;
             vm.pollValues = [], vm.pollVotes = [];
+            vm.chartOptions = {
+                legend: {display: true}
+            };
             vm.noVotesCast = false;
 
             for(var i in pollOptions.option){

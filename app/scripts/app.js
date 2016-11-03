@@ -11,21 +11,19 @@ StateConfig.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvide
  */
 function StateConfig($stateProvider, $urlRouterProvider, $locationProvider) {
 
-    $urlRouterProvider.when("", "/auth");
+    $urlRouterProvider.when("", "/");
     $stateProvider
         .state('auth', {
-            url: '/auth',
+            url: '/',
             controller: 'authController',
             controllerAs: 'authCtrl'
         })
         .state('home', {
-            url: '/home',
             templateUrl: require('../views/app.homePage.html'),
             controller: 'homeController',
             controllerAs: 'homeCtrl'
         })        
         .state('profile', {
-            url: '/profile',
             templateUrl: require('../views/app.profilePage.html'),
             controller: 'profileController',
             controllerAs: 'profileCtrl',

@@ -43,7 +43,6 @@
                 controller: 'viewPollDetailsModalController',
                 controllerAs: 'viewPollDetailsModalCtrl',
                 scope: $scope,
-                keyboard: false,
                 resolve: {
                     pollOptions: function() {
                         return angular.copy(options);

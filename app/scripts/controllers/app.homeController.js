@@ -15,8 +15,7 @@
                 templateUrl: require('../../views/app.signUpModal.html'),
                 controller: 'signUpModalController',
                 controllerAs: 'signUpModalCtrl',
-                scope: $scope,
-                keyboard: false
+                scope: $scope
             });
             
             modalInstance.result.then(function (response) {
@@ -31,8 +30,7 @@
                 templateUrl: require('../../views/app.loginModal.html'),
                 controller: 'loginModalController',
                 controllerAs: 'loginModalCtrl',
-                scope: $scope,
-                keyboard: false
+                scope: $scope
             });
             
             modalInstance.result.then(function (response) {

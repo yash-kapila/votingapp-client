@@ -56,7 +56,6 @@
                 username: $stateParams.username
             };            
             postLogin.getMyPolls(user).then(function(response){
-                // polls successfully fetched
                 vm.retrievedPolls = response.data.polls;
             }, function(response){
                 // error while fetching polls    
@@ -79,13 +78,11 @@
         };
 
         vm.viewPollDetails = function(options){
-            console.log(JSON.stringify(options));
             var modalInstance = $uibModal.open({
                 templateUrl: require('../../views/app.viewPollDetails.html'),
                 controller: 'viewPollDetailsModalController',
                 controllerAs: 'viewPollDetailsModalCtrl',
                 scope: $scope,
-                keyboard: false,
                 resolve: {
                     pollOptions: function() {
                         return angular.copy(options);
