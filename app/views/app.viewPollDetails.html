@@ -6,7 +6,8 @@
     <div class="poll-chart">
         <div ng-hide="viewPollDetailsModalCtrl.noVotesCast">
             <canvas id="pie" class="chart chart-pie" class="poll-pie-chart"
-                chart-data="viewPollDetailsModalCtrl.pollVotes" chart-labels="viewPollDetailsModalCtrl.pollValues">
+                chart-data="viewPollDetailsModalCtrl.pollVotes" chart-labels="viewPollDetailsModalCtrl.pollValues"
+                chart-options="viewPollDetailsModalCtrl.chartOptions">
             </canvas>
         </div>
         <div ng-show="viewPollDetailsModalCtrl.noVotesCast" class="no-votes-cast text-center">

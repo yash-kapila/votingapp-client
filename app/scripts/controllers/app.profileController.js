@@ -11,10 +11,13 @@
         var vm = this;
     
         vm.logout = function(){
+            vm.loadingSpin = true;
             postLogin.signOut().then(function(response){
                 // on successful logout
+                vm.loadingSpin = false;
                 $state.go('auth');
             }, function(response){
+                vm.loadingSpin = false;
                 // on unsuccessful logout
             });
         };
@@ -32,6 +35,7 @@
         };
 
         vm.submitPoll = function(){
+            vm.loadingSpin = true;
             var pollInfo = {
                 username: $stateParams.username,
                 id: $stateParams.userid,
@@ -42,23 +46,28 @@
             postLogin.submitPoll(pollInfo).then(function(response){
                 // poll saved successfully
                 vm.pollURL = response.data.url;
+                vm.loadingSpin = false;
                 vm.pollCreated = true;
                 vm.newPoll = false;
                 vm.myPolls = false;
             }, function(response){
                 // error while saving poll
                 console.log("IN FAILURE");
+                vm.loadingSpin = false;
             });
         };
 
         vm.retrievePolls = function(){
+            vm.loadingSpin = true;
             var user = {
                 username: $stateParams.username
             };            
             postLogin.getMyPolls(user).then(function(response){
                 vm.retrievedPolls = response.data.polls;
+                vm.loadingSpin = false;
             }, function(response){
-                // error while fetching polls    
+                // error while fetching polls
+                vm.loadingSpin = false;
             });
         };
 
@@ -92,15 +101,18 @@
         };
 
         vm.deletePoll = function(options){
+            vm.loadingSpin = true;
             var pollID = {
                 _id: options._id
             };
             
             postLogin.deletePoll(pollID).then(function(response){
                 // poll deleted successfully - refresh list of polls
+                vm.loadingSpin = false;
                 vm.retrievePolls();
             }, function(response){
                 // poll wasn't deleted
+                vm.loadingSpin = false;
             });
         };
 
@@ -109,6 +121,7 @@
         };
 
         var initialize = function(){
+            vm.loadingSpin = false;
             vm.newPoll = true;
             vm.myPolls = false;
 

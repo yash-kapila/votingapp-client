@@ -11,6 +11,7 @@
         var vm = this;
 
         vm.signUp = function(){
+            vm.loadingSpin = true;
             var record = {
                 email: vm.email,
                 username: vm.username,
@@ -18,11 +19,12 @@
             };
 
             preLogin.signUpUser(record).then(function(response){
-                console.log("SUCCESS: " + response);
+                vm.loadingSpin = false;
                 vm.signupFailure = false;
                 $uibModalInstance.close(response);
             }, function(response){
                 console.log("FAILURE: " + JSON.stringify(response));
+                vm.loadingSpin = false;
                 vm.signupFailure = true;
                 vm.signupFailureMsg = response.data;
             });
@@ -30,6 +32,7 @@
         
         
         var initialize = function(){
+            vm.loadingSpin = false;
             vm.signupFailure = false;
             vm.signupFailureMsg = '';
         };

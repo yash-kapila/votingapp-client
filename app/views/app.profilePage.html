@@ -1,85 +1,93 @@
-<header>
-	<div class="row vote-header">
-		<div class="col-xs-9 col-sm-9 col-md-9 vote-header-title">
-			<span> VotePlex </span>
-		</div>
-		<div class="col-xs-3 col-sm-3 col-md-3 vote-header-buttons">
-			<button class="btn btn-default form-inline" ng-click="profileCtrl.logout()"> Logout </button>
-		</div>
-	</div>
-</header>
+<div class="spinner" ng-show="profileCtrl.loadingSpin">
+    <i class="fa fa-spinner fa-spin" style="font-size:24px"></i>
+</div>
 
-<div class="body">
-	<div class="vote-body">
-		<div class="vote-body-h1">
-			<h1> Dashboard </h1>
-		</div>
-		<div class="vote-body-h4">
-			<h4> What would you like to do today? </h4>
-		</div>
-		<div class="vote-body-button">
-			<button class="btn btn-success form-inline" ng-click="profileCtrl.newPollTab();"> 
-				New Poll 
-			</button>
-			<button class="btn btn-info form-inline" ng-click="profileCtrl.myPollsTab()"> 
-				My Polls 
-			</button>
-		</div>
-	</div>
-	
-	<div ng-show="profileCtrl.newPoll">
-		<div class="col-xs-4 col-sm-4 col-md-4"></div>
-		<div class="col-xs-4 col-sm-4 col-md-4 text-center">
-			<div>
-				<h1> New Poll </h1>
+<div ng-class="{'loading-request': profileCtrl.loadingSpin===true}">
+	<header>
+		<div class="row vote-header">
+			<div class="col-xs-9 col-sm-9 col-md-9 vote-header-title">
+				<span> VotePlex </span>
 			</div>
-	        <div class="form-group">
-	            <label> Name your poll. </label>
-	            <input type="text" class="form-control" ng-model="profileCtrl.pollName">
-	        </div>
-	        <div class="form-group">
-	            <label> Options </label>
-	            <div ng-repeat="option in profileCtrl.pollOptions" class="poll-options">
-	            	<input type="text" class="form-control" ng-model="option.value">
-	            </div>
-	        </div>
-	        <div>
-	        	<button class="btn btn-default" ng-click="profileCtrl.addOptions()"> More Options </button>
-	        	<br><br>
-	        	<button class="btn btn-success" ng-click="profileCtrl.submitPoll()"> Submit Poll </button>
-	        </div>
+			<div class="col-xs-3 col-sm-3 col-md-3 vote-header-buttons">
+				<button class="btn btn-default form-inline" ng-click="profileCtrl.logout()"> Logout </button>
+			</div>
 		</div>
-	</div>
-
-	<div ng-show="profileCtrl.myPolls" class="text-center">
-		<div class="retrieved-polls-list">
-			<table class="table">
-				<tr>
-					<th class="text-center"> Poll </th>
-					<th class="text-center"> Action </th>
-				</tr>
-				<tr ng-repeat="options in profileCtrl.retrievedPolls">
-					<td class="cursor" ng-click="profileCtrl.viewPollDetails(options);"> {{options.question}} </td>
-					<td> 
-						<button class="btn btn-default" ng-click="profileCtrl.deletePoll(options);"> Delete </button>
-					</td>
-				</tr>
-			</table>
-		</div>
-	</div>
+	</header>
 	
-	<div ng-show="profileCtrl.pollCreated" class="text-center">
-		<div>
-			<h1> Congratulations! </h1>
-			<h5> Your poll has been posted to </h5>
-			<h4 class="pollURL cursor" ng-click="profileCtrl.openPoll();"> {{profileCtrl.pollURL}} </h4>
+	<div class="body">
+		<div class="vote-body">
+			<div class="vote-body-h1">
+				<h1> Dashboard </h1>
+			</div>
+			<div class="vote-body-h4">
+				<h4> What would you like to do today? </h4>
+			</div>
+			<div class="vote-body-button">
+				<button class="btn btn-success form-inline" ng-click="profileCtrl.newPollTab();"> 
+					New Poll 
+				</button>
+				<button class="btn btn-info form-inline" ng-click="profileCtrl.myPollsTab()"> 
+					My Polls 
+				</button>
+			</div>
 		</div>
+		
+		<div ng-show="profileCtrl.newPoll">
+			<div class="col-xs-4 col-sm-4 col-md-4"></div>
+			<div class="col-xs-4 col-sm-4 col-md-4 text-center">
+				<div>
+					<h1> New Poll </h1>
+				</div>
+		        <div class="form-group">
+		            <label> Name your poll. </label>
+		            <input type="text" class="form-control" ng-model="profileCtrl.pollName">
+		        </div>
+		        <div class="form-group">
+		            <label> Options </label>
+		            <div ng-repeat="option in profileCtrl.pollOptions" class="poll-options">
+		            	<input type="text" class="form-control" ng-model="option.value">
+		            </div>
+		        </div>
+		        <div>
+		        	<button class="btn btn-default" ng-click="profileCtrl.addOptions()"> More Options </button>
+		        	<br><br>
+		        	<button class="btn btn-success" ng-click="profileCtrl.submitPoll()"> Submit Poll </button>
+		        </div>
+			</div>
+		</div>
+	
+		<div ng-show="profileCtrl.myPolls" class="text-center">
+			<div class="retrieved-polls-list">
+				<table class="table">
+					<tr>
+						<th class="text-center"> Poll </th>
+						<th class="text-center"> URL </th>
+						<th class="text-center"> Action </th>
+					</tr>
+					<tr ng-repeat="options in profileCtrl.retrievedPolls">
+						<td class="cursor" ng-click="profileCtrl.viewPollDetails(options);"> {{options.question}} </td>
+						<td> {{options.url}} </td>
+						<td> 
+							<button class="btn btn-default" ng-click="profileCtrl.deletePoll(options);"> Delete </button>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		
+		<div ng-show="profileCtrl.pollCreated" class="text-center">
+			<div>
+				<h1> Congratulations! </h1>
+				<h5> Your poll has been posted to </h5>
+				<h4 class="pollURL cursor" ng-click="profileCtrl.openPoll();"> {{profileCtrl.pollURL}} </h4>
+			</div>
+		</div>
+	
+		<div ng-show="profileCtrl.pollNotCreated" class="text-center">
+			<div>
+				<h5> Unfortunately we weren't able to create your poll this time. </h5>
+				<h5> Please try again. </h5>
+			</div>
+		</div>	
 	</div>
-
-	<div ng-show="profileCtrl.pollNotCreated" class="text-center">
-		<div>
-			<h5> Unfortunately we weren't able to create your poll this time. </h5>
-			<h5> Please try again. </h5>
-		</div>
-	</div>	
 </div>
