@@ -14,6 +14,8 @@
         <div class="form-group login-failure-error" ng-show="loginModalCtrl.loginFailure">
             <span> {{loginModalCtrl.loginFailureMsg}} </span>
         </div>
-        <button type="submit" class="btn btn-primary" ng-click="loginModalCtrl.login()"> Login </button>
+        <button type="submit" class="btn btn-primary" ng-click="loginModalCtrl.login()" ng-disabled="loginModalCtrl.loadingSpin"> 
+            Login 
+        </button>
     </form>
 </div>

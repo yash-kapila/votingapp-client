@@ -18,6 +18,8 @@
         <div class="form-group signup-failure-error" ng-show="signUpModalCtrl.signupFailure">
             <span> {{signUpModalCtrl.signupFailureMsg}} </span>
         </div>
-        <button type="submit" class="btn btn-primary" ng-click="signUpModalCtrl.signUp()"> Sign Up </button>
+        <button type="submit" class="btn btn-primary" ng-click="signUpModalCtrl.signUp()" ng-disabled="signUpModalCtrl.loadingSpin"> 
+            Sign Up 
+        </button>
     </form>
 </div>

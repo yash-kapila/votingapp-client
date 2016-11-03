@@ -38,7 +38,7 @@
 					<tr ng-repeat="option in pollDetailsCtrl.pollOptions">
 						<td> 
 						    <input type="radio" class="poll-value-radio" name="pollOptions" 
-						    	ng-value="option._id" ng-model="pollDetailsCtrl.selectedOption">
+						    	ng-value="option._id" ng-model="pollDetailsCtrl.selectedOption" ng-disabled="pollDetailsCtrl.loadingSpin">
 						</td>
 						<td> 
 							<span class="poll-value-label"> {{option.value}} </span>
@@ -46,7 +46,9 @@
 					</tr>
 				</table>            
 	            <div>
-	                <button class="btn btn-success" ng-click="pollDetailsCtrl.pollVote()"> Vote </button>
+	                <button class="btn btn-success" ng-click="pollDetailsCtrl.pollVote()" ng-disabled="pollDetailsCtrl.loadingSpin"> 
+	                	Vote 
+	                </button>
 	            </div>
 			</div>
 		</div>	

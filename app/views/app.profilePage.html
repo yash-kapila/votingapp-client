@@ -9,7 +9,9 @@
 				<span> VotePlex </span>
 			</div>
 			<div class="col-xs-3 col-sm-3 col-md-3 vote-header-buttons">
-				<button class="btn btn-default form-inline" ng-click="profileCtrl.logout()"> Logout </button>
+				<button class="btn btn-default form-inline" ng-click="profileCtrl.logout()" ng-disabled="profileCtrl.loadingSpin"> 
+					Logout 
+				</button>
 			</div>
 		</div>
 	</header>
@@ -23,10 +25,10 @@
 				<h4> What would you like to do today? </h4>
 			</div>
 			<div class="vote-body-button">
-				<button class="btn btn-success form-inline" ng-click="profileCtrl.newPollTab();"> 
+				<button class="btn btn-success form-inline" ng-click="profileCtrl.newPollTab();" ng-disabled="profileCtrl.loadingSpin"> 
 					New Poll 
 				</button>
-				<button class="btn btn-info form-inline" ng-click="profileCtrl.myPollsTab()"> 
+				<button class="btn btn-info form-inline" ng-click="profileCtrl.myPollsTab()" ng-disabled="profileCtrl.loadingSpin"> 
 					My Polls 
 				</button>
 			</div>
@@ -49,9 +51,13 @@
 		            </div>
 		        </div>
 		        <div>
-		        	<button class="btn btn-default" ng-click="profileCtrl.addOptions()"> More Options </button>
+		        	<button class="btn btn-default" ng-click="profileCtrl.addOptions()" ng-disabled="profileCtrl.loadingSpin"> 
+		        		More Options 
+		        	</button>
 		        	<br><br>
-		        	<button class="btn btn-success" ng-click="profileCtrl.submitPoll()"> Submit Poll </button>
+		        	<button class="btn btn-success" ng-click="profileCtrl.submitPoll()" ng-disabled="profileCtrl.loadingSpin"> 
+		        		Submit Poll 
+		        	</button>
 		        </div>
 			</div>
 		</div>
@@ -68,7 +74,9 @@
 						<td class="cursor" ng-click="profileCtrl.viewPollDetails(options);"> {{options.question}} </td>
 						<td> {{options.url}} </td>
 						<td> 
-							<button class="btn btn-default" ng-click="profileCtrl.deletePoll(options);"> Delete </button>
+							<button class="btn btn-default" ng-click="profileCtrl.deletePoll(options);" ng-disabled="profileCtrl.loadingSpin">
+								Delete
+							</button>
 						</td>
 					</tr>
 				</table>
