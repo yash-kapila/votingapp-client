@@ -62,3 +62,7 @@
 .loading-request{
 	opacity: 0.5;
 }
+
+.app-version{
+	font-size: 12px;
+}

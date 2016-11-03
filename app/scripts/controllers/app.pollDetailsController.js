@@ -2,12 +2,12 @@
 	'use strict';
     angular.module('voting_app').controller('pollDetailsController', PollDetailsController);
 
-    PollDetailsController.$inject = ['$scope', '$stateParams', 'preLogin', '$uibModal'];
+    PollDetailsController.$inject = ['$scope', '$stateParams', 'preLogin', '$uibModal', 'staticData'];
 
     /**
      *
      */
-    function PollDetailsController($scope, $stateParams, preLogin, $uibModal) {
+    function PollDetailsController($scope, $stateParams, preLogin, $uibModal, staticData) {
         var vm = this;
         
         vm.retrievePolls = function(){
@@ -58,6 +58,7 @@
         };
 
         var initialize = function(){
+            vm.appVersion = staticData.appVersion;
             vm.loadingSpin = false;
             vm.pollRecord = {};
             vm.pollOptions = [];

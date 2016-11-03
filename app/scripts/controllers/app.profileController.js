@@ -2,12 +2,12 @@
 	'use strict';
     angular.module('voting_app').controller('profileController', ProfileCtrl);
 
-    ProfileCtrl.$inject = ['$scope', '$state', '$stateParams', '$cookies', 'postLogin', '$uibModal'];
+    ProfileCtrl.$inject = ['$scope', '$state', '$stateParams', '$cookies', 'postLogin', '$uibModal', 'staticData'];
 
     /**
      *
      */
-    function ProfileCtrl($scope, $state, $stateParams, $cookies, postLogin, $uibModal) {
+    function ProfileCtrl($scope, $state, $stateParams, $cookies, postLogin, $uibModal, staticData) {
         var vm = this;
     
         vm.logout = function(){
@@ -121,6 +121,7 @@
         };
 
         var initialize = function(){
+            vm.appVersion = staticData.appVersion;
             vm.loadingSpin = false;
             vm.newPoll = true;
             vm.myPolls = false;

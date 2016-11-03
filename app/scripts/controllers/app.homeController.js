@@ -2,12 +2,12 @@
 	'use strict';
     angular.module('voting_app').controller('homeController', HomeCtrl);
 
-    HomeCtrl.$inject = ['$scope', '$uibModal', '$state'];
+    HomeCtrl.$inject = ['$scope', '$uibModal', '$state', 'staticData'];
 
     /**
      *
      */
-    function HomeCtrl($scope, $uibModal, $state) {
+    function HomeCtrl($scope, $uibModal, $state, staticData) {
         var vm = this;
         
         vm.signUp = function() {
@@ -39,5 +39,11 @@
                 // No change to modal is dismissed
             });                 
         };
+        
+        var initialize = function(){
+            vm.appVersion = staticData.appVersion;
+        };
+        
+        initialize();
     }
 })();
