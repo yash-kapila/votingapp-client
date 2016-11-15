@@ -27,7 +27,7 @@ module.exports = function(){
 			]
 		},
 		plugins: [
-			new ExtractTextPlugin('./bundle.[chunkhash].css'),			
+			new ExtractTextPlugin('./bundle.[chunkhash].css'),
 			new webpack.ProvidePlugin({
 				$: 'jquery',
 				jQuery: 'jquery',
@@ -42,8 +42,8 @@ module.exports = function(){
 		]
 	};
 	
-	config.debug = true;
-	config.devtool = 'eval';
+	//config.debug = true;
+	//config.devtool = 'eval';
 
 	config.plugins = config.plugins.concat(
 		new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.[chunkhash].js")
